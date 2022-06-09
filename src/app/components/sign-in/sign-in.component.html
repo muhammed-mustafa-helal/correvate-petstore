@@ -1,0 +1,49 @@
+<mat-card class="sign-in">
+  <mat-card-content>
+    <div class="sign-in__content">
+      <h2>Welcome to our petstore!</h2>
+      <p>Sign in to enjoy our platform</p>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="sign-in__content--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              placeholder="username"
+              ngModel
+              name="username"
+              required
+              type="text"
+            />
+            <mat-error> Username is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="sign-in__content--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              placeholder="password"
+              ngModel
+              name="password"
+              required
+              type="password"
+            />
+            <mat-error> password is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="sign-in__content--submit">
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="!loginForm.valid"
+            (click)="onSubmit(loginForm)"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

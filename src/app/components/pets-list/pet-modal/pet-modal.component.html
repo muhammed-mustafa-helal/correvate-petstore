@@ -1,0 +1,39 @@
+<div class="pet-modal">
+  <h1 mat-dialog-title>{{ pet.name }}</h1>
+  <img mat-card-image [src]="pet.photoUrls[0]" [alt]="pet.name" />
+  <mat-card-subtitle>
+    <mat-chip-list aria-label="Pet Status">
+      <mat-chip color="primary">
+        {{ pet.status | titlecase }}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-subtitle>
+  <div mat-dialog-actions>
+    <button
+      *ngIf="!this.pet.addedToCart"
+      mat-raised-button
+      color="primary"
+      (click)="addToCart()"
+      [disabled]="(pet.status | lowercase) !== PetStatusEnum.AVAILABLE"
+      id="add-to-cart"
+      [title]="
+        (pet.status | lowercase) !== PetStatusEnum.AVAILABLE
+          ? 'Pet is not available'
+          : 'Add to cart'
+      "
+    >
+      Add to cart
+    </button>
+    <button
+      *ngIf="this.pet.addedToCart"
+      mat-raised-button
+      color="accent"
+      (click)="removeFromCart()"
+      id="remove-from-cart"
+      [title]="'Remove from cart'"
+    >
+      Remove from cart
+    </button>
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  </div>
+</div>

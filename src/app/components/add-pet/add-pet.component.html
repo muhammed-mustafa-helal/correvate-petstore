@@ -1,0 +1,64 @@
+<mat-card class="add-pet">
+  <mat-card-content>
+    <div class="add-pet__content">
+      <h2>Do you need a new trusted owner to adopt your pet?</h2>
+      <p>Add your pet's data to our platform and let the search begin!</p>
+      <form [formGroup]="petForm" (ngSubmit)="onSubmit()">
+        <div class="add-pet__content--input">
+          <mat-form-field
+            appearance="outline"
+            class="add-pet__content--input--name"
+          >
+            <mat-label>Pet Name</mat-label>
+            <input
+              matInput
+              placeholder="Pet Name"
+              required
+              formControlName="name"
+              type="text"
+            />
+            <mat-error>Pet name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="add-pet__content--input">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose your pet status</mat-label>
+            <mat-select formControlName="status" required>
+              <mat-option *ngFor="let status of petStatusEnum" [value]="status">
+                {{ status | titlecase }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="status?.errors?.['required']"
+              >You must make a selection</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="add-pet__content--input">
+          <label for="file-upload" class="add-pet__content--input--file">
+            <input
+              id="file-upload"
+              type="file"
+              accept=".jpg,.jpeg,.png"
+              (change)="fileChanged($event)"
+              required
+          /></label>
+          <mat-error *ngIf="image?.errors?.['invalidType']"
+            >You must select either a png or a jpeg</mat-error
+          >
+          <br />
+        </div>
+        <div class="add-pet__content--submit">
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="!petForm.valid"
+          >
+            Add Pet
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

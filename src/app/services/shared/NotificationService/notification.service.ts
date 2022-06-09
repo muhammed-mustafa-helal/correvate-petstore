@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+
+import { ToastrService } from 'ngx-toastr';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class NotificationService {
+  constructor(private toastr: ToastrService) {}
+
+  notifyError(message?: string, title?: string, override?: {}): number {
+    const toasterOptions = {
+      positionClass: 'default-toaster-position',
+      disableTimeOut: true,
+      ...override,
+    };
+    return this.toastr.error(message, title, toasterOptions).toastId;
+  }
+}

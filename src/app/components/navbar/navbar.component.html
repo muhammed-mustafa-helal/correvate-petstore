@@ -1,0 +1,49 @@
+<mat-toolbar color="primary" class="mat-elevation-z8 petstore-nav">
+  <div class="petstore-nav__logo">
+    <span class="petstore-nav__logo--title">Petstore</span>
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Petstore logo"
+      class="petstore-nav__logo--icon"
+      >pets</mat-icon
+    >
+  </div>
+  <div class="petstore-nav__menu">
+    <a routerLink="/explore" routerLinkActive="active" mat-button
+      >Explore Pets</a
+    >
+    <a routerLink="/addpet" mat-button routerLinkActive="active">Add Pet</a>
+    <button
+      mat-icon-button
+      aria-label="petstore-cart"
+      class="petstore-nav__menu--item"
+    >
+      <mat-icon [matBadge]="cartItemsCounter">shopping_cart</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Profile options"
+    >
+      <img
+        mat-card-avatar
+        src="../../../assets/imgs/profile-avatar.png"
+        alt="profile Avatar"
+      />
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>{{ mode }}</mat-icon>
+        <mat-slide-toggle
+          [(ngModel)]="isChecked"
+          (change)="changeTheme($event)"
+        ></mat-slide-toggle>
+      </button>
+      <button mat-menu-item (click)="logoutUser()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

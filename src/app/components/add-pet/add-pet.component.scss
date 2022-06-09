@@ -1,0 +1,28 @@
+.add-pet {
+  max-width: 60rem;
+  margin: 2em auto;
+  text-align: center;
+  max-height: 60rem;
+
+  &__content {
+    text-align: center;
+
+    &--input {
+      padding-top: 1rem;
+
+      &--name {
+        width: 80%;
+      }
+
+      &--file {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        cursor: pointer;
+      }
+    }
+    &--submit button {
+      margin: 1rem;
+    }
+  }
+}

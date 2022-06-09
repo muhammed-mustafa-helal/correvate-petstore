@@ -1,0 +1,22 @@
+.pet-card-grid {
+  &__filters {
+    text-align: center;
+    padding: 3rem;
+    button {
+      margin: 0.5rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 5rem auto;
+    max-width: 140rem;
+
+    petstore-pet {
+      width: 40rem;
+      height: 28rem;
+    }
+  }
+}

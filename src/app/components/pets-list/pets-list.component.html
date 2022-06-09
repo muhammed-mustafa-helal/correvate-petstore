@@ -1,0 +1,33 @@
+<div class="pet-card-grid" *ngIf="!isLoading">
+  <div class="pet-card-grid__filters">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="fetchPetsByStatus(petStatusEnum.AVAILABLE)"
+      [disabled]="petStatus === petStatusEnum.AVAILABLE"
+    >
+      {{ petStatusEnum.AVAILABLE | titlecase }}
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="fetchPetsByStatus(petStatusEnum.PENDING)"
+      [disabled]="petStatus === petStatusEnum.PENDING"
+    >
+      {{ petStatusEnum.PENDING | titlecase }}
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="fetchPetsByStatus(petStatusEnum.SOLD)"
+      [disabled]="petStatus === petStatusEnum.SOLD"
+    >
+      {{ petStatusEnum.SOLD | titlecase }}
+    </button>
+  </div>
+  <div class="pet-card-grid__container">
+    <petstore-pet *ngFor="let pet of filteredPets" [pet]="pet"></petstore-pet>
+  </div>
+</div>
+
+<petstore-loading-spinner *ngIf="isLoading"></petstore-loading-spinner>

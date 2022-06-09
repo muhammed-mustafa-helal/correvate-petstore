@@ -1,0 +1,18 @@
+.sign-in {
+  max-width: 60rem;
+  margin: 2em auto;
+  text-align: center;
+  max-height: 60rem;
+  &__content {
+    text-align: center;
+    &--input {
+      padding-top: 1rem;
+      & mat-form-field {
+        width: 80%;
+      }
+    }
+    &--submit button {
+      margin: 1rem;
+    }
+  }
+}

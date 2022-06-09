@@ -1,0 +1,26 @@
+@import "~@angular/material/theming";
+@import "../../../styles/variables.scss";
+
+.petstore-nav {
+  display: flex;
+  justify-content: space-between;
+  &__logo {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    &--icon {
+      padding-left: 1rem;
+    }
+  }
+  &__menu--item {
+    margin-right: 1rem;
+  }
+}
+
+.active {
+  color: mat-color($accent);
+  &__signin {
+    color: white;
+    background-color: #000;
+  }
+}
